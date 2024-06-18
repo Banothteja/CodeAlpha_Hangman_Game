@@ -1,11 +1,13 @@
 import random
 
+# Categories and Corresponding word lists
 categories = {
     'bike': ['kawasaki', 'ducati', 'suzuki', 'ktm', 'triumph'],
     'car': ['supra', 'hatchback', 'bmw', 'lamborghini', 'jaguar'],
     'sports': ['basketball', 'football', 'tennis', 'volleyball', 'badminton']
 }
 
+# ASCII art representation of the hangman
 hangman_stages = [
     '''
        +---+
@@ -72,6 +74,7 @@ hangman_stages = [
     '''
 ]
 
+# Function to choose a category and word from that category
 def choose_category():
     print("Choose a category:")
     for idx, category in enumerate(categories.keys()):
@@ -86,9 +89,11 @@ def choose_category():
         except (IndexError, ValueError):
             print("Invalid input. Please enter the number of the category you want to play.")
 
+# Function to display the current state of the word with gussed letters
 def display_word(word, guessed_letters):
     return ' '.join([letter if letter in guessed_letters else '_' for letter in word])
 
+# Main game function
 def play_hangman():
     print("Welcome to Hangman!\n")
     player_name = input("Enter your name: ")
@@ -126,5 +131,6 @@ def play_hangman():
         print("\nGame Over! The word was:", word)
         print("\n" + hangman_stages[incorrect_guesses])
 
+# Run the game
 if __name__ == "__main__":
     play_hangman()
